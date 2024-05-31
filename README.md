@@ -28,11 +28,11 @@ used boilerplate: https://github.com/lxieyang/chrome-extension-boilerplate-react
 
 ### Run development server (version MUST match manifest version of the theme)
 
-* ```npm startv3``` (continuous development mode + hot reload, manifest version 3)
+* ```npm run startv3``` (continuous development mode + hot reload, manifest version 3)
 
 OR
 
-* ```npm startv2``` (continuous development mode + hot reload, manifest version 2)
+* ```npm run startv2``` (continuous development mode + hot reload, manifest version 2)
 
 __Load in Firefox (most likely v2):__
 * open `about:debugging`

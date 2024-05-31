@@ -26,12 +26,12 @@ config.plugins = [new webpack.HotModuleReplacementPlugin()].concat(
 );
 
 delete config.chromeExtensionBoilerplate;
+config.mode = 'development';
 
 var compiler = webpack(config);
 
 var server = new WebpackDevServer(
   {
-    https: false,
     hot: false,
     client: false,
     host: 'localhost',

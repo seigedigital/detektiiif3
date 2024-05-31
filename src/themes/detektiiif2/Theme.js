@@ -14,7 +14,7 @@ class Theme extends ThemeTemplate {
   logoImageBig = LogoImageBig
 
   about = <div style={{overflow:'auto',marginBottom:'30px'}}>
-            <h2 style={{marginTop:'0px'}}>About detektIIIF2</h2>
+            <h2 style={{marginTop:'0px'}}>About detektIIIF3</h2>
 
             <p style={{clear:'both',verticalAlign:'middle',padding:'0px 20px 0px 0px'}}><a href="https://detektiiif.net" target="_blank">https://detektiiif.net</a></p>
 

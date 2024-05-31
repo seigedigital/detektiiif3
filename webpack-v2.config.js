@@ -1,3 +1,5 @@
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
 var webpack = require('webpack'),
   path = require('path'),
   fileSystem = require('fs-extra'),
@@ -9,7 +11,7 @@ var webpack = require('webpack'),
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 var alias = {
-  'react-dom': '@hot-loader/react-dom',
+  // 'react-dom': '@hot-loader/react-dom',
 };
 
 // load the secrets
@@ -211,4 +213,9 @@ if (env.NODE_ENV === 'development') {
   };
 }
 
-module.exports = options;
+module.exports = {
+  options,
+  plugins: [
+    new ReactRefreshWebpackPlugin(),
+  ]
+};

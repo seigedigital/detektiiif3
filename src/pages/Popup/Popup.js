@@ -97,6 +97,7 @@ class Popup extends Component {
         this.openRemDialog = this.openRemDialog.bind(this)
         this.removeOperation = this.removeOperation.bind(this)
         this.getDataFromLocalStorage = this.getDataFromLocalStorage.bind(this)
+        this.openLocalMirador = this.openLocalMirador.bind(this)
         // this.routine = this.routine.bind(this)
 
         this.loadBasket()
@@ -222,6 +223,10 @@ class Popup extends Component {
     }
 
     // FIXME use sync if it was asked for
+
+    openLocalMirador() {
+      chrome.tabs.create({'url': 'miradorPage.html'})
+    }
 
     loadBasket() {
       console.log("loading basket "+this.defaults.storeBasket)
@@ -465,6 +470,7 @@ class Popup extends Component {
                 )}
                 <button onClick={() => this.copyBasketCollection()} className="ButtonCopyBasket" key={"COPYBASKETCOLLECTION"}>Copy {this.theme.basketName} (JSON)</button>
                 <button onClick={() => this.openRemDialog(null)} className="ButtonClearBasket" key={"CLEARBASKETCOLLECTION"}>Clear {this.theme.basketName}</button>
+                <button onClick={() => this.openLocalMirador()} className="ButtonCopyBasket" key={"OPENBASKETINLOKALMIRADOR"}>Local Mirador</button>
                 <br key={v4()}/>
                 <br key={v4()}/>
                 {bs}

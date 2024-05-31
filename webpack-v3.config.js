@@ -9,7 +9,7 @@ var webpack = require('webpack'),
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 var alias = {
-  'react-dom': '@hot-loader/react-dom',
+  // 'react-dom': '@hot-loader/react-dom',
 };
 
 // load the secrets
@@ -37,6 +37,7 @@ var options = {
   entry: {
     // newtab: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.jsx'),
     options: path.join(__dirname, 'src', 'pages', 'Options', 'index.js'),
+    miradorpage: path.join(__dirname, 'src', 'pages', 'MiradorPage', 'index.js'),
     popup: path.join(__dirname, 'src', 'pages', 'Popup', 'index.jsx'),
     background: path.join(__dirname, 'src', 'pages', 'Background', 'index.js'),
     // contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
@@ -177,6 +178,12 @@ var options = {
       chunks: ['popup'],
       cache: false,
     }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'pages', 'MiradorPage', 'index.html'),
+      filename: 'miradorpage.html',
+      chunks: ['miradorpage'],
+      cache: false,
+    }),    
     // new HtmlWebpackPlugin({
     //   template: path.join(__dirname, 'src', 'pages', 'Devtools', 'index.html'),
     //   filename: 'devtools.html',
