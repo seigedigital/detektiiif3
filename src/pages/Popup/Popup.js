@@ -230,7 +230,7 @@ class Popup extends Component {
 
     loadBasket() {
       console.log("loading basket "+this.defaults.storeBasket)
-      const s = this.defaults.storeBasket==='sync' ? chrome.storage.local : chrome.storage.local
+      const s = this.defaults.storeBasket==='sync' ? chrome.storage.sync : chrome.storage.sync
       s.get('basket', (data) => {
         if('basket' in data) {
           this.setState(data)
@@ -240,7 +240,7 @@ class Popup extends Component {
 
     saveBasket(data) {
       console.log("saving basket "+this.defaults.storeBasket)
-      const s = this.defaults.storeBasket==='sync' ? chrome.storage.local : chrome.storage.local
+      const s = this.defaults.storeBasket==='sync' ? chrome.storage.sync  : chrome.storage.sync
       s.set({basket:data}, () => {
         console.log({BSaved:data})
         this.setState({basket:data})

@@ -16,7 +16,7 @@ let miradorInstance = false
 let allManifests = []
 
 
-chrome.storage.local.get(['basket'], (result) => {
+chrome.storage.sync.get(['basket'], (result) => {
 
   // instantiate Mirador
   let counter = 0
@@ -68,9 +68,9 @@ function pushManifest(uri) {
   }
 }
 
-// Listen for changes in chrome.storage.local
+// Listen for changes in chrome.storage.local // sync!!!
 chrome.storage.onChanged.addListener((changes, areaName) => {
-  if (areaName === 'local') {
+  if (areaName === 'sync') {
     if(changes.basket!==undefined) {
       console.log("BASKET CHANGE")
       console.log(changes.basket)
