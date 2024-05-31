@@ -2,7 +2,6 @@
   "manifest_version": 2,
   "name": "detektIIIF 2",
   "version": "0.2.0",
-  "key": "detektiiif3extkey",
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true

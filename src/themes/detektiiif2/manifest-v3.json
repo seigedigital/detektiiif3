@@ -2,7 +2,6 @@
   "manifest_version": 3,
   "name": "detektIIIF2",
   "version": "0.2.0",
-  "key": "detektiiif3extkey",
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
   "permissions": [
