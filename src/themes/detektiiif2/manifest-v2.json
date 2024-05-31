@@ -2,6 +2,7 @@
   "manifest_version": 2,
   "name": "detektIIIF 2",
   "version": "0.2.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAha1F27snzt18y6bfq2kKf51cWwukSQ2cTevTflMJjSiTHG4M37ivZsfh2BGZF3Nk2qL8IKZfCGR8jfn8BWfrtZ9vx1by63HxhVZzMQRvJYGvijelP095ZlhRs6q2XFrXMMken1WZBlf2VQtwAtSX6AxdmClS2Dtva0ROG16MxnENZGmCRsPwtUq2ldm8WkMvj1InTthMzADJVegQVT5YEg9yyvEzx1cWZKvtJ1GRUjS1xgwh1O2e2XODOeRi4f9eWr8KyKB/27asc4BaIKZDJyBQMCgwQuhDRohU5nXbSfxNjDwY7ZexKZ5yLybripXOJkA5UUVuq2XIJPDRExKz9QIDAQAB",
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
