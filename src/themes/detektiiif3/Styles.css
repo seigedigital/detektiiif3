@@ -58,9 +58,9 @@ In this file:
   text-align: right;
   grid-row: 1;
   grid-column: 1;
-  background-color: #ccc;
+  background-color: #444;
   color: white;
-  padding:20px;
+  padding:10px;
   margin:0;
 }
 
@@ -112,6 +112,10 @@ In this file:
 .Logo-image {
   height:20pt;
   margin-bottom:10pt;
+}
+
+.Logo-image-Big {
+  height:100px;
 }
 
 .BasketIcon {
@@ -294,3 +298,4 @@ button {
   margin:0;
   margin-right:4px;
 }
+

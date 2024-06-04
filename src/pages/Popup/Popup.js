@@ -225,7 +225,7 @@ class Popup extends Component {
     // FIXME use sync if it was asked for
 
     openLocalMirador() {
-      chrome.tabs.create({'url': 'miradorPage.html'})
+      chrome.tabs.create({'url': 'miradorpage.html'})
     }
 
     loadBasket() {
@@ -539,7 +539,7 @@ class Popup extends Component {
                 </TabPanel>
                 <TabPanel value={this.state.tab} index={4} key={"TABPANEL4"}>
                   {this.theme.about}<br />
-                  {'detektIIIF2 '}{this.softwareVersion}{' / Theme'}{this.themeVersion}
+                  {'detektIIIF3 '}{this.softwareVersion}{' / Theme'}{this.themeVersion}
                 </TabPanel>
             </div>
           )
@@ -604,6 +604,8 @@ class Popup extends Component {
                 <a href="#" onClick={ () => { this.setState({tab:4}) } } key={"FOOTERABOUT"}>About</a>
                 &nbsp;|&nbsp;
                 <a href="#" onClick={ () => { chrome.runtime.openOptionsPage() } } key={"FOOTEROPTIONS"}>Options</a>
+                &nbsp;|&nbsp;
+                <a href="#" onClick={ () => { this.openLocalMirador() } } key={"FOOTERMIRADOR"}>Mirador</a>
               </span>
             </div>
 

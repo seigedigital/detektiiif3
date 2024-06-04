@@ -8,7 +8,7 @@ import React from 'react'
 class ThemeTemplate {
 
   // Title
-  title = "DetektIIIF Version 2"
+  title = "DetektIIIF Version 3"
   about = <span>About DetektIIIF.</span>
 
   // Options
