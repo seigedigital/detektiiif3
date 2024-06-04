@@ -1,4 +1,4 @@
-![](src/themes/detektIIIF3/images/logo-2048.png)
+![](src/themes/detektiiif3/images/logo-2048.png)
 
 # detektIIIF3
 
@@ -6,9 +6,12 @@ detektIIIF is a browser extension for Chrome and Firefox that detects IIIF resou
 
 This code is considered to be in beta state. __Important steps: splitting code into components and reducing redundancy and incompleteness of quickly written code.__
 
-This is the current version of detektIIIF3 (Version 1: https://github.com/leanderseige/detektiiif)
+This is the current version of detektIIIF3
+older versions: 
+* Version 1: https://github.com/leanderseige/detektiiif
+* Version 2: https://github.com/seigedigital/detektiiif2
 
-If you don't want to work with the source code you may install detektIIIF3 from the Chrome Web Store: https://chrome.google.com/webstore/detail/detektiiif-2/aaodcobgcadinjipaocibamdfcffpcpp
+If you don't want to work with the source code you may install detektIIIF3 from the Chrome Web Store: https://chromewebstore.google.com/detail/detektiiif3/aaodcobgcadinjipaocibamdfcffpcpp 
 
 ## Source Code
 
@@ -59,7 +62,7 @@ OR
 
 Duplicate one of the folders in src/themes for your own theme
 ```
-cp -r detektIIIF3 myinstitution
+cp -r detektiiif3 myinstitution
 ```
 Modify the files in the new folder as you wish and continue as described in section "Configure repository"
 
