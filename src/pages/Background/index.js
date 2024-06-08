@@ -917,6 +917,7 @@ import { v4 } from 'uuid'
         }
 
         if(typeof tab.url === 'string') {
+
           let regex = /(https:\/\/[^\"\>]+\/)[maxful0-9,!]+\/[maxful0-9,!]+\/[0-9\!]{1,4}\/default\.jpg/gm
           let matches = tab.url.matchAll(regex)
           matches = [...matches]
@@ -924,6 +925,17 @@ import { v4 } from 'uuid'
             console.log({matches:matches})
             fetchHttp(matches[0][1]+"info.json",tabId)
           }
+
+          // Internet Archive
+          // https://archive.org/details/mma_albert_einstein_270714
+          regex = /https:\/\/archive.org\/details\/([^\/]+)/gm
+          matches = tab.url.matchAll(regex)
+          matches = [...matches]
+          if(matches!==null && matches.length>0) {
+            console.log({matches:matches})
+            fetchHttp("https://iiif.archive.org/iiif/"+matches[0][1]+"/manifest.json",tabId)
+          }
+          
         }
 
         // if(filterURLs(tab.url)) {
