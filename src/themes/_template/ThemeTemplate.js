@@ -67,7 +67,7 @@ class ThemeTemplate {
 
   openManifestLinks = {
     uv: {
-      url: 'https://universalviewer.io/uv.html?manifest=%%%URI%%%',
+      url: 'https://uv-v4.netlify.app/#?manifest=%%%URI%%%',
       tabBasket: false,
       tabManifests: true,
       backgroundColor: "#5e724d",
