@@ -17,8 +17,6 @@ export function v2GetManifestThumbnail(manifest) {
 
 export function v3GetManifestThumbnail(manifest) {
 
-  console.log("v3GetManifestThumbnail")
-
   if('thumbnail' in manifest) {
     return getStringOrId(manifest['thumbnail'])
 
@@ -29,8 +27,6 @@ export function v3GetManifestThumbnail(manifest) {
     return getStringOrId(manifest['items'][0]['items'][0]['thumbnail'])
   
   }  else if('service' in manifest['items'][0]['items'][0]['items'][0]['body']) {
-    console.log("V3 THUMB!!!");
-    console.log(manifest['items'][0]['items'][0]['items'][0]['body']['service'][0]['id']+'/full/,100/0/default.jpg');
     return manifest['items'][0]['items'][0]['items'][0]['body']['service'][0]['id']+'/full/,100/0/default.jpg';
   }
 
