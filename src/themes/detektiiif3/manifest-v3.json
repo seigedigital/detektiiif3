@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "detektIIIF3",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
   "permissions": [
@@ -21,7 +21,6 @@
   "icons": {
     "128": "icon-128.png"
   },
-  "devtools_page": "devtools.html",
   "web_accessible_resources": [
     {
       "resources": ["content.styles.css", "icon-128.png", "icon-34.png"],

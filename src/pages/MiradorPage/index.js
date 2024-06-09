@@ -8,8 +8,7 @@ if(container) {
   const root = createRoot(container);
   root.render(<HourglassEmptyIcon />);  
 } else {
-  console.log("SSS")
-  alert("XXX")
+  console.log("no container")
 }
 
 let miradorInstance = false

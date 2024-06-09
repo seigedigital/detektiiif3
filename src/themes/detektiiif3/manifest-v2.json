@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "detektIIIF3",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
@@ -30,7 +30,6 @@
       "css": ["content.styles.css"]
     }
   ],
-  "devtools_page": "devtools.html",
   "web_accessible_resources": [
     "content.styles.css",
     "icon-128.png",

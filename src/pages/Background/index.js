@@ -11,6 +11,7 @@ import { v4 } from 'uuid'
     var cache_cors = {}
     var ignoreDomains = []
     var animSequence = ['◐','◓','◑','◒']
+    var docStorage  = {}
 
     const networkFilters = {
         urls: [
@@ -357,7 +358,7 @@ import { v4 } from 'uuid'
       let url
 
       // Generic 1, should match e.g. National Museum Sweden
-      let regex_generic1 = /(https\:\/\/[^\"<\ ]*(iiif|i3f|manifest)[^\"<\ ]*(?<!.jpg))/gi
+      let regex_generic1 = /(https?\:\/\/[^\"<\ ]*(iiif|i3f|manifest)[^\"<\ ]*(?<!.jpg))/gi
       let allurls = [...doc.matchAll(regex_generic1)]
       let params = []
       for(let key in allurls) {
@@ -386,7 +387,7 @@ import { v4 } from 'uuid'
       }
 
       // Generic 2, intra-Link
-      let regex_generic2 = /http[^\"<\ ]*=(https\:\/\/[^\"\&]*(iiif|i3f|manifest)[^\"\&<]*)/gi
+      let regex_generic2 = /http[^\"<\ ]*=(https?\:\/\/[^\"\&]*(iiif|i3f|manifest|collection)[^\"\&<]*)/gi
       allurls = [...doc.matchAll(regex_generic2)]
       params = []
       for(let key in allurls) {
@@ -404,6 +405,35 @@ import { v4 } from 'uuid'
         url = params[key]
         if(cache[url]===undefined) {
           console.log("check guess type 2: "+url)
+          cache[url] = "INPROGRESS"
+          fetchHttp(url,tabId)
+        } else {
+          // console.log("NO check type 2: "+url)
+        }
+      }
+
+      console.log("GENERIC 3")
+      // Generic 3, .json
+      let regex_generic3 = /(https?\:\/\/[^\"\ <>]*(iiif|i3f|manifest|collection)[^\"\ <>]*\.json)/gi
+      allurls = [...doc.matchAll(regex_generic3)]
+      console.log("CASE 3")
+      console.log(allurls)
+      params = []
+      for(let key in allurls) {
+        if(!params.includes(allurls[key][1])) {
+          params.push(allurls[key][1])
+        }
+      }
+      if(params.length>19) {
+        console.log("detektIIIF: limiting huge number of matches (case 3)") // FIXME do nice status in tab header, dont alert
+        params=params.slice(0,19)
+        tabStorage[tabId].truncated=true
+        saveLocalTabStorage()
+      }
+      for(let key in params) {
+        url = params[key]
+        if(cache[url]===undefined) {
+          console.log("check guess type 3: "+url)
           cache[url] = "INPROGRESS"
           fetchHttp(url,tabId)
         } else {
@@ -663,8 +693,10 @@ import { v4 } from 'uuid'
 //  PROGRAM STARTS HERE
 //
 
-
   chrome.runtime.onMessage.addListener((msg, sender, response) => {
+      
+    console.log("onMessage")
+
       switch (msg.type) {
           case 'popupInit':
               console.log("POPUP INIT")
@@ -769,13 +801,17 @@ import { v4 } from 'uuid'
 
     chrome.webRequest.onCompleted.addListener((details) => {
 
+      console.log("onCompleted")
+
       let { tabId, requestId, url, timeStamp, method } = details
 
       if(tabId==chrome.tabs.TAB_ID_NONE) {
+          console.log("TAB_ID_NONE")
           return
       }
 
       if(filterURLs(url)) {
+          console.log("filtered URL")
           return
       }
 
@@ -787,6 +823,7 @@ import { v4 } from 'uuid'
       })
 
         if (!tabStorage.hasOwnProperty(tabId) || !tabStorage[tabId].requests.hasOwnProperty(requestId)) {
+            console.log("Exit no ID")
             return
         }
 
@@ -802,22 +839,25 @@ import { v4 } from 'uuid'
             console.debug("DETEKTIIIF CACHE MISS: "+url)
             fetchHttp(url,tabId)
         }
+
     }, networkFilters, ["responseHeaders"])
 
     function sendMsg(tabId) {
       console.log("sendMsg")
+
       if(document===undefined) {
         console.log("NO DOCUMENT DEFINED")
         return
       }
 
+      // docStorage[tabId] = document.documentElement.innerHTML
       chrome.runtime.sendMessage(
         {type: 'docLoad', doc: document.documentElement.innerHTML, tabId: tabId}
       )
 
-      let container = document.documentElement || document.body
+      return
 
-      console.log({container:container})
+      let container = document.documentElement || document.body
 
       let config = { attributes: true, childList: true, characterData: true, subtree:true }
 
@@ -855,6 +895,9 @@ import { v4 } from 'uuid'
     }
 
     function getAndObserve(tabId) {
+
+      console.log("OBSERVING: "+tabId)
+
       let mv = chrome.runtime.getManifest().manifest_version
 
           console.log("MV is " + mv)
@@ -944,10 +987,9 @@ import { v4 } from 'uuid'
         // }
 
         if(changeInfo.status==='complete' || true) {
-          console.log(tab)
-          if(!filterURLs(tab.url)) {
+          // if(!filterURLs(tab.url)) {
             getAndObserve(tabId)
-          }
+          // }
           updateIcon(tabId)
         }
     })
@@ -1055,7 +1097,10 @@ import { v4 } from 'uuid'
       console.log({GOT:data})
     })
 
-    console.log("(RE)STARTED")
+    // console.log("detektIIIF init sequence starting.")
+
+    console.log("detektIIIF (re)started")
+
     loadLocalTabStorage()
 
     eternalIconUpdateLoop()
