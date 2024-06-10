@@ -847,7 +847,7 @@ import { v4 } from 'uuid'
       { type: 'docLoad', doc: document.documentElement.innerHTML, tabId: tabId }
     )
 
-    return
+    return // stop here the observer madness (nor now)
 
     let container = document.documentElement || document.body
 
