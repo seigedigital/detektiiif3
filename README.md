@@ -13,6 +13,11 @@ older versions:
 
 If you don't want to work with the source code you may install detektIIIF3 from the Chrome Web Store: https://chromewebstore.google.com/detail/detektiiif3/aaodcobgcadinjipaocibamdfcffpcpp 
 
+## Support detektIIIF
+If detektIIIF helps you discover, access, or work with IIIF resources, you can support its continued development with a small contribution. Your support helps me spend more time maintaining the extension, fixing bugs, keeping up with changes across browsers and IIIF services, and developing new features. Every contribution is appreciated, no matter the amount.
+
+**https://paypal.me/leanderseige**
+
 ## Source Code
 
 used boilerplate: https://github.com/lxieyang/chrome-extension-boilerplate-react
